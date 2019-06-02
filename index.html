@@ -5,10 +5,42 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-	
 
-	<script src="scripts.js"></script>
+	<header class="mainHeader">
+		<button id="play" class="button button--play" aria-label="Start">
+			<img width="32" height="32" src="img/play.svg" alt="">
+		</button>
+		
+		<button id="reset" class="button button--reset" aria-label="Reset">
+			<img width="32" height="32" src="img/reset.svg" alt="">
+		</button>
+		
+		<span class="time" id="time">0:00</span>
+		
+		<button id="faq" class="button button--faq" aria-label="FAQ">
+			<img width="32" height="32" src="img/faq.svg" alt="">
+		</button>
+	</header>
+	
+	<main class="main">
+		<div class="eye eye--left" id="eye-1">1</div>
+		<div class="eye eye--right" id="eye-2">2</div>
+	</main>
+
+	<footer class="mainFooter">
+		<section class="mainFooter__block">
+			<h3 class="mainFooter__heading">Speed</h3>
+			<input type="range" id="speed" class="range range--speed">
+		</section>
+		<section class="mainFooter__block">
+			<h3 class="mainFooter__heading">Distance</h3>
+			<input type="range" id="distance" class="range range--distance">
+		</section>
+	</footer>
+
+	<script src="js/scripts.js"></script>
 </body>
 </html>
