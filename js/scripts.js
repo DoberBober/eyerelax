@@ -17,9 +17,23 @@ const DISTANCE = document.querySelector('#distance');
 var speed_value = 100 - SPEED.value
 var distance_value = DISTANCE.value
 var tempDistance = '-25px';
+var tempTime = 0;
 
 var leftEyeTimeout;
 var rightEyeTimeout;
+var tuoemiTemit;
+
+/*
+	— Я жду с минуты на минуту гонца. Взгляни на дорогу, кого ты там видишь?
+	— Никого.
+	— Мне бы такое зрение — увидеть никого, да еще на таком расстоянии.
+*/
+
+function clearAllIntervals(){
+	clearInterval(leftEyeTimeout)
+	clearInterval(rightEyeTimeout)
+	clearInterval(tuoemiTemit)
+}
 
 /*
 	— Больно глазам.
@@ -38,8 +52,7 @@ function getRangeValue(rangeElement, valueVariable){
 	// Если тренировка запущена, перезапускаем её.
 	if(leftEyeTimeout && leftEyeTimeout){
 		document.body.classList.remove('working');
-		clearInterval(leftEyeTimeout)
-		clearInterval(rightEyeTimeout)
+		clearAllIntervals()
 		start()
 	}
 }
@@ -64,11 +77,15 @@ DISTANCE.addEventListener('input', () => {
 function start(){
 	if(document.body.classList.contains('working')){
 		document.body.classList.remove('working');
-		clearInterval(leftEyeTimeout)
-		clearInterval(rightEyeTimeout)
+		clearAllIntervals()
 	} else {
 		document.body.classList.add('working');
 	
+		tuoemiTemit = setInterval(() => {
+			tempTime++;
+			TIME.textContent = Math.floor(tempTime / 60) + ':' + (tempTime % 60 < 10 ? '0' + tempTime % 60 : tempTime % 60)
+		}, 1000)
+
 		leftEyeTimeout = setInterval(() => {
 			EYE_LEFT.style.marginLeft = parseInt(window.getComputedStyle(EYE_LEFT).marginLeft) - 3 + 'px'
 		}, speed_value * 10)
@@ -89,19 +106,12 @@ PLAY.addEventListener('click', () => {
 
 RESET.addEventListener('click', () => {
 	document.body.classList.remove('working');
-	clearInterval(leftEyeTimeout)
-	clearInterval(rightEyeTimeout)
+	clearAllIntervals()
 	EYE_LEFT.style.marginLeft = tempDistance;
 	EYE_RIGHT.style.marginRight = tempDistance;
+	tempTime = 0;
+	TIME.textContent = '0:00';
 })
-
-
-/*
-	— Я жду с минуты на минуту гонца. Взгляни на дорогу, кого ты там видишь?
-	— Никого.
-	— Мне бы такое зрение — увидеть никого, да еще на таком расстоянии.
-*/
-
 
 
 /*
