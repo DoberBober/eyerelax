@@ -15,7 +15,8 @@ const SPEED = document.querySelector('#speed');
 const DISTANCE = document.querySelector('#distance');
 
 var speed_value = 100 - SPEED.value
-var distance_value = 100 - DISTANCE.value
+var distance_value = DISTANCE.value
+var tempDistance = '-25px';
 
 var leftEyeTimeout;
 var rightEyeTimeout;
@@ -31,11 +32,12 @@ function getRangeValue(rangeElement, valueVariable){
 		case 'speed':
 			speed_value = 100 - rangeElement.value;
 		case 'distance':
-			distance_value = 100 - rangeElement.value;
+			distance_value = rangeElement.value;
 	}
 
 	// Если тренировка запущена, перезапускаем её.
 	if(leftEyeTimeout && leftEyeTimeout){
+		document.body.classList.remove('working');
 		clearInterval(leftEyeTimeout)
 		clearInterval(rightEyeTimeout)
 		start()
@@ -47,6 +49,10 @@ SPEED.addEventListener('input', () => {
 })
 DISTANCE.addEventListener('input', () => {
 	getRangeValue(DISTANCE, 'distance')
+
+	tempDistance = -distance_value + 'px';
+	EYE_LEFT.style.marginLeft = -distance_value + 'px'
+	EYE_RIGHT.style.marginRight = -distance_value + 'px'
 })
 
 /*
@@ -56,17 +62,21 @@ DISTANCE.addEventListener('input', () => {
 */
 
 function start(){
-	document.body.classList.toggle('working');
-
-	leftEyeTimeout = setInterval(() => {
-		EYE_LEFT.style.marginLeft = parseInt(window.getComputedStyle(EYE_LEFT).marginLeft) - 3 + 'px'
-		console.log(speed_value)
-	}, speed_value * 10)
-
-	rightEyeTimeout = setInterval(() => {
-		EYE_RIGHT.style.marginLeft = parseInt(window.getComputedStyle(EYE_RIGHT).marginLeft) + 3 + 'px'
-		console.log(speed_value)
-	}, speed_value * 10)
+	if(document.body.classList.contains('working')){
+		document.body.classList.remove('working');
+		clearInterval(leftEyeTimeout)
+		clearInterval(rightEyeTimeout)
+	} else {
+		document.body.classList.add('working');
+	
+		leftEyeTimeout = setInterval(() => {
+			EYE_LEFT.style.marginLeft = parseInt(window.getComputedStyle(EYE_LEFT).marginLeft) - 3 + 'px'
+		}, speed_value * 10)
+	
+		rightEyeTimeout = setInterval(() => {
+			EYE_RIGHT.style.marginRight = parseInt(window.getComputedStyle(EYE_RIGHT).marginRight) - 3 + 'px'
+		}, speed_value * 10)
+	}
 }
 
 PLAY.addEventListener('click', () => {
@@ -76,6 +86,14 @@ PLAY.addEventListener('click', () => {
 /*
 	Когда закрываешь глаза, смотришь в себя — в темноту.
 */
+
+RESET.addEventListener('click', () => {
+	document.body.classList.remove('working');
+	clearInterval(leftEyeTimeout)
+	clearInterval(rightEyeTimeout)
+	EYE_LEFT.style.marginLeft = tempDistance;
+	EYE_RIGHT.style.marginRight = tempDistance;
+})
 
 
 /*

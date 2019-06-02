@@ -11,7 +11,8 @@
 
 	<header class="mainHeader">
 		<button id="play" class="button button--play" aria-label="Start">
-			<img width="32" height="32" src="img/play.svg" alt="">
+			<img class="button__play" width="32" height="32" src="img/play.svg" alt="">
+			<img class="button__pause" width="32" height="32" src="img/pause.svg" alt="">
 		</button>
 		
 		<button id="reset" class="button button--reset" aria-label="Reset">
@@ -37,7 +38,7 @@
 		</section>
 		<section class="mainFooter__block">
 			<h3 class="mainFooter__heading">Distance</h3>
-			<input type="range" id="distance" min="1" max="50" name="distance" class="range range--distance">
+			<input type="range" id="distance" value="25" min="10" max="155" name="distance" class="range range--distance">
 		</section>
 	</footer>
 

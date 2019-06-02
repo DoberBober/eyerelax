@@ -37,6 +37,19 @@ footer{
 	margin-right: 0;
 }
 
+.button__play{
+	display: block;
+}
+.button__pause{
+	display: none;
+}
+.working .button__play{
+	display: none;
+}
+.working .button__pause{
+	display: block;
+}
+
 .mainHeader{
 	padding: 10px 15px;
 	display: flex;
@@ -45,6 +58,7 @@ footer{
 .main{
 	flex-grow: 1;
 	position: relative;
+	overflow: hidden;
 }
 .mainFooter{
 	padding: 10px 15px;
@@ -65,16 +79,20 @@ footer{
 	justify-content: center;
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	margin: -25px 0 0 -25px;
+	margin-top: -25px;
 	border-radius: 100%;
 	background-color: pink;
+	transition: .2s;
 }
 .eye--left{
 	transform: translateX(-50px);
+	left: 50%;
+	margin-left: -25px;
 }
 .eye--right{
 	transform: translateX(50px);
+	right: 50%;
+	margin-right: -25px;
 }
 
 
