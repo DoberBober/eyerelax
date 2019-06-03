@@ -99,15 +99,20 @@ function start(){
 		tuoemiTemit = setInterval(() => {
 			tempTime++;
 			TIME.textContent = Math.floor(tempTime / 60) + ':' + (tempTime % 60 < 10 ? '0' + tempTime % 60 : tempTime % 60)
+			if(tempTime !=0 && tempTime % 60 == 0){
+				if ("vibrate" in navigator){
+					navigator.vibrate(500);
+				}
+			}
 		}, 1000)
 
 		leftEyeTimeout = setInterval(() => {
 			EYE_LEFT.style.marginLeft = parseInt(window.getComputedStyle(EYE_LEFT).marginLeft) - 3 + 'px'
-		}, speed_value * 10)
+		}, speed_value * 5)
 	
 		rightEyeTimeout = setInterval(() => {
 			EYE_RIGHT.style.marginRight = parseInt(window.getComputedStyle(EYE_RIGHT).marginRight) - 3 + 'px'
-		}, speed_value * 10)
+		}, speed_value * 5)
 	}
 }
 
@@ -175,31 +180,3 @@ DONATE_PURPOSE.forEach((el) => {
 		DONATE_PURPOSE_LABEL.value = el.value
 	})
 })
-
-
-
-/*
-	https://money.yandex.ru/quickpay/shop-widget?
-		writer=seller&
-		targets=Coffee&
-		targets-hint=&
-		default-sum=100&
-		button-text=11&
-		payment-type-choice=on&
-		hint=&successURL=https%3A%2F%2Fwebbeaver.ru&
-		quickpay=shop&
-		account=410014062225052
-*/
-
-/*
-	https://money.yandex.ru/quickpay/shop-widget?
-		writer=seller&
-		targets=!!!!!!&
-		targets-hint=&
-		default-sum=100&
-		button-text=11&
-		payment-type-choice=on&
-		hint=&successURL=https%3A%2F%2Fwebbeaver.ru&
-		quickpay=shop&
-		account=410014062225052
-*/
