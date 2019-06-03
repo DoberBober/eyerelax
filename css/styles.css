@@ -34,7 +34,15 @@ footer{
 }
 .button--faq{
 	margin-left: auto;
+}
+.button--donate{
 	margin-right: 0;
+}
+.button--close{
+	position: absolute;
+	margin-right: 0;
+	right: 10px;
+	top: 10px;
 }
 
 .button__play{
@@ -174,4 +182,34 @@ input[type=range] {
   input[type=range]:focus::-ms-fill-upper {
 	background: #2abd5c;
   }
-  
+
+.info{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	overflow: auto;
+	width: 100vw;
+	height: 100vh;
+	padding: 20px;
+	background-color: #9FBEFE;
+}
+.info--visible{
+	display: block;
+}
+.info h1{
+	margin-top: 0;
+}
+.info blockquote{
+	position: relative;
+	margin-left: 0;
+	padding-left: 50px;
+}
+.info blockquote::before{
+	position: absolute;
+	content: url('../img/warning.svg');
+	left: 0;
+	top: 0;
+	width: 40px;
+	height: 40px;
+}

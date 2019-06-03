@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +10,22 @@
 <body>
 
 	<header class="mainHeader">
-		<button id="play" class="button button--play" aria-label="Start">
+		<button id="play" class="button button--play" aria-label="Старт">
 			<img class="button__play" width="32" height="32" src="img/play.svg" alt="">
 			<img class="button__pause" width="32" height="32" src="img/pause.svg" alt="">
 		</button>
 		
-		<button id="reset" class="button button--reset" aria-label="Reset">
+		<button id="reset" class="button button--reset" aria-label="Сброс">
 			<img width="32" height="32" src="img/reset.svg" alt="">
 		</button>
 		
 		<span class="time" id="time">0:00</span>
 		
-		<button id="faq" class="button button--faq" aria-label="FAQ">
+		<button id="faq" class="button button--faq" aria-label="Инструкция">
 			<img width="32" height="32" src="img/faq.svg" alt="">
+		</button>
+		<button id="donate" class="button button--donate" aria-label="Задонатить автору">
+			<img width="32" height="32" src="img/donate.svg" alt="">
 		</button>
 	</header>
 	
@@ -33,14 +36,36 @@
 
 	<footer class="mainFooter">
 		<section class="mainFooter__block">
-			<h3 class="mainFooter__heading">Speed</h3>
+			<h3 class="mainFooter__heading">Скорость</h3>
 			<input type="range" id="speed" min="1" max="50" name="speed" class="range range--speed">
 		</section>
 		<section class="mainFooter__block">
-			<h3 class="mainFooter__heading">Distance</h3>
+			<h3 class="mainFooter__heading">Дистанция</h3>
 			<input type="range" id="distance" value="25" min="10" max="155" name="distance" class="range range--distance">
 		</section>
 	</footer>
+
+	<article id="info" class="info">
+		<button id="close" class="button button--close" aria-label="Закрыть инструкцию">
+			<img width="32" height="32" src="img/close.svg" alt="">
+		</button>
+		<h1>Инструкция по расслаблению глаз</h1>
+		<p>Для тренировки нужно отдалить экран на расстояние 30 сантиметров, включить движение кружков и смотреть левым глазом на левый кружок, а правым - на правый.</p>
+
+		<h2>Как смотреть левым глазом на левый круг, а правым - на правый?</h2>
+		<ul>
+			<li>Поднесите экран поближе к лицу, чтобы кружки были напротив ваших глаз.</li>
+			<li>Поиграйте с фокусом зрения. Для этого смотрите «сквозь» экран (принцип работы такой же, как и при просмотре стереокартинок).</li>
+			<li>Оба кружка должны размыться, а по центру, между ними, появиться чёткий третий кружок.</li>
+			<li>Медленно отдаляйте экран, сохраняя кружки объединенными.</li>
+			<li>Повторите несколько раз, чтобы научиться легко объединять круги.</li>
+		</ul>
+
+		<p>Время тренировки - 2-3 минуты. Если у вас не получается удерживать кружки вместе всё это время, уменьшите скорость.</p>
+		<blockquote>
+			Частая ошибка: левый глаз смотрит на правый кружок, а правый - на левый. Чтобы проверить не допускаете ли вы такую ошибку, после объединения кружков, закройте левый глаз. Открытый правый глаз должен смотреть на правый кружок. <b>Иначе эффект от тренировки будет обратный.</b>
+		</blockquote>
+	</article>
 
 	<script src="js/scripts.js"></script>
 </body>

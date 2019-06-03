@@ -5,6 +5,11 @@
 const PLAY = document.querySelector('#play');
 const RESET = document.querySelector('#reset');
 const FAQ = document.querySelector('#faq');
+const DONATE = document.querySelector('#donate');
+const CLOSE = document.querySelector('#close');
+
+const INFO = document.querySelector('#info');
+// const DRINK = document.querySelector('#drink');
 
 const TIME = document.querySelector('#time');
 
@@ -106,7 +111,7 @@ PLAY.addEventListener('click', () => {
 
 RESET.addEventListener('click', () => {
 	document.body.classList.remove('working');
-	clearAllIntervals()
+	clearAllIntervals()	
 	EYE_LEFT.style.marginLeft = tempDistance;
 	EYE_RIGHT.style.marginRight = tempDistance;
 	tempTime = 0;
@@ -122,7 +127,15 @@ RESET.addEventListener('click', () => {
 	Музыка, наверное, очень красивая.
 */
 
+FAQ.addEventListener('click', () => {
+	document.body.classList.remove('working');
+	INFO.classList.add('info--visible');
+	clearAllIntervals()	
+})
 
+CLOSE.addEventListener('click', () => {
+	INFO.classList.remove('info--visible');
+})
 
 /*
 	Мир грёз нельзя увидеть глазами, его нужно почувствовать сердцем.
