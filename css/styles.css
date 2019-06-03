@@ -10,16 +10,21 @@ body{
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	background: #b4cedb
+	background: #b4cedb;
+	font-family: sans-serif;
 }
-header{
-	outline: 1px solid red;
-}
-main{
-	outline: 1px solid green;
-}
-footer{
-	outline: 1px solid yellow;
+.visually-hidden{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: none;
+	overflow: hidden;
+	white-space: nowrap;
+	clip: rect(0, 0, 0, 0);
+	-webkit-clip-path: inset(100%);
+	clip-path: inset(100%);
 }
 
 .button{
@@ -39,10 +44,10 @@ footer{
 	margin-right: 0;
 }
 .button--close{
-	position: absolute;
+	position: fixed;
 	margin-right: 0;
 	right: 10px;
-	top: 10px;
+	top: 20px;
 }
 
 .button__play{
@@ -183,7 +188,7 @@ input[type=range] {
 	background: #2abd5c;
   }
 
-.info{
+.modal{
 	display: none;
 	position: fixed;
 	left: 0;
@@ -191,25 +196,128 @@ input[type=range] {
 	overflow: auto;
 	width: 100vw;
 	height: 100vh;
-	padding: 20px;
+	padding: 20px 70px 20px 20px;
 	background-color: #9FBEFE;
 }
-.info--visible{
+.modal--visible{
 	display: block;
 }
-.info h1{
+.modal__content{
+	background: #fff;
+	padding: 20px;
+}
+.modal--info h1{
 	margin-top: 0;
 }
-.info blockquote{
+.modal--info blockquote{
 	position: relative;
 	margin-left: 0;
 	padding-left: 50px;
 }
-.info blockquote::before{
+.modal--info blockquote::before{
 	position: absolute;
 	content: url('../img/warning.svg');
 	left: 0;
 	top: 0;
 	width: 40px;
 	height: 40px;
+}
+
+.donate{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.donate label{
+	margin: 0 10px;
+	display: flex;
+	align-items: center;
+}
+.donate img{
+	margin-right: 5px;
+}
+.modal--donate p{
+	margin-top: 0;
+}
+.donate img, .donateForm__type img{
+	filter: grayscale(100%);
+	transition: .25s;
+}
+.donate input:checked + label img,
+.donateForm__wrapper input:checked + label img{
+	filter: grayscale(0%);
+}
+.donateForm__wrapper input:checked + label{
+	background-color: #ffeca6;
+}
+.donateForm__wrapper label{
+	transition: .25s;
+}
+
+.donateForm{
+	margin-top: 25px;
+	padding: 20px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 3px 4px -3px rgba(0,0,0,.3);
+}
+.donateForm__submit{
+	display: block;
+	border: none;
+	padding: 0 15px;
+	font-size: 15px;
+	line-height: 32px;
+	border-radius: 3px;
+	background-color: #ffdb4d;
+	transition: background-color .1s ease-out 0s;
+}
+.donateForm__submit:hover,
+.donateForm__submit:focus{
+	background-color: #fc0;
+}
+
+.donateForm__note{
+	font-size: 13px;
+	margin-bottom: 5px;
+	color: #999;
+}
+.donateForm__purpose{
+	display: block;
+	border: none;
+	font-size: 18px;
+}
+.donateForm__wrapper{
+	display: flex;
+}
+.donateForm__wrap{
+	position: relative;
+	margin-right: 10px;
+}
+.donateForm__wrap img{
+	position: absolute;
+	right: 3px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.donateForm__summ{
+	width: 100px;
+	height: 100%;
+	padding: 0 5px;
+	border: 1px solid rgba(0,0,0,.25);
+}
+.donateForm__type{
+	padding: 3px;
+	display: flex;
+	border: 1px solid rgba(0,0,0,.25);
+}
+.donateForm__type--first{
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.donateForm__type--last{
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-left: none;
+}
+
+.donateForm__submit, .donateForm__wrapper{
+	margin-top: 20px;
 }

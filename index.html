@@ -45,28 +45,79 @@
 		</section>
 	</footer>
 
-	<article id="info" class="info">
-		<button id="close" class="button button--close" aria-label="Закрыть инструкцию">
+	<article id="info" class="modal modal--info">
+		<button id="closeInfo" class="button button--close" aria-label="Закрыть инструкцию">
 			<img width="32" height="32" src="img/close.svg" alt="">
 		</button>
-		<h1>Инструкция по расслаблению глаз</h1>
-		<p>Для тренировки нужно отдалить экран на расстояние 30 сантиметров, включить движение кружков и смотреть левым глазом на левый кружок, а правым - на правый.</p>
+		<div class="modal__content">
+			<h1>Инструкция по расслаблению глаз</h1>
+			<p>Для тренировки нужно отдалить экран на расстояние 30 сантиметров, включить движение кружков и смотреть левым глазом на левый кружок, а правым - на правый.</p>
 
-		<h2>Как смотреть левым глазом на левый круг, а правым - на правый?</h2>
-		<ul>
-			<li>Поднесите экран поближе к лицу, чтобы кружки были напротив ваших глаз.</li>
-			<li>Поиграйте с фокусом зрения. Для этого смотрите «сквозь» экран (принцип работы такой же, как и при просмотре стереокартинок).</li>
-			<li>Оба кружка должны размыться, а по центру, между ними, появиться чёткий третий кружок.</li>
-			<li>Медленно отдаляйте экран, сохраняя кружки объединенными.</li>
-			<li>Повторите несколько раз, чтобы научиться легко объединять круги.</li>
-		</ul>
+			<h2>Как смотреть левым глазом на левый круг, а правым - на правый?</h2>
+			<ul>
+				<li>Поднесите экран поближе к лицу, чтобы кружки были напротив ваших глаз.</li>
+				<li>Поиграйте с фокусом зрения. Для этого смотрите «сквозь» экран (принцип работы такой же, как и при просмотре стереокартинок).</li>
+				<li>Оба кружка должны размыться, а по центру, между ними, появиться чёткий третий кружок.</li>
+				<li>Медленно отдаляйте экран, сохраняя кружки объединенными.</li>
+				<li>Повторите несколько раз, чтобы научиться легко объединять круги.</li>
+			</ul>
 
-		<p>Время тренировки - 2-3 минуты. Если у вас не получается удерживать кружки вместе всё это время, уменьшите скорость.</p>
-		<blockquote>
-			Частая ошибка: левый глаз смотрит на правый кружок, а правый - на левый. Чтобы проверить не допускаете ли вы такую ошибку, после объединения кружков, закройте левый глаз. Открытый правый глаз должен смотреть на правый кружок. <b>Иначе эффект от тренировки будет обратный.</b>
-		</blockquote>
+			<p>Время тренировки - 2-3 минуты. Если у вас не получается удерживать кружки вместе всё это время, уменьшите скорость.</p>
+			<blockquote>
+				Частая ошибка: левый глаз смотрит на правый кружок, а правый - на левый. Чтобы проверить не допускаете ли вы такую ошибку, после объединения кружков, закройте левый глаз. Открытый правый глаз должен смотреть на правый кружок. <b>Иначе эффект от тренировки будет обратный.</b>
+			</blockquote>
+		</div>
 	</article>
 
+	<article id="money" class="modal modal--donate">
+		<button id="closeDonate" class="button button--close" aria-label="Закрыть инструкцию">
+			<img width="32" height="32" src="img/close.svg" alt="">
+		</button>
+
+		<div class="modal__content">
+			<p>Если вам понравился тренажёр, вы можете поблагодарить автора, отправив ему любую желаемую сумму.</p>
+
+			<div class="donate">
+				<input class="visually-hidden modal__input" type="radio" name="donate" value="На пиво" id="beer">
+				<label for="beer" aria-label="На пиво">
+					<img width="32" height="32" src="img/beer.svg" alt="">
+					На пиво
+				</label>
+				<input class="visually-hidden modal__input" type="radio" name="donate" value="На кофе" id="coffee">
+				<label for="coffee" aria-label="На кофе">
+					<img width="32" height="32" src="img/coffee.svg" alt="">
+					На кофе
+				</label>
+			</div>
+
+			<form class="donateForm" method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
+				<input type="hidden" name="receiver" value="410014062225052">
+				<input type="hidden" name="quickpay-form" value="donate">
+				<span class="donateForm__note">Назначение перевода</span>
+				<input class="donateForm__purpose" type="text" readonly name="targets" value="На что-нибудь другое">
+				<input type="hidden" name="need-fio" value="false">
+				<input type="hidden" name="need-email" value="false">
+				<input type="hidden" name="need-phone" value="false">
+				<input type="hidden" name="need-address" value="false">
+				<div class="donateForm__wrapper">
+					<div class="donateForm__wrap">
+						<input class="donateForm__summ" type="number" name="sum" value="100" data-type="number">
+						<img width="14" src="img/ruble.svg" alt="">
+					</div>
+					<input checked class="visually-hidden" type="radio" name="paymentType" value="AC" id="ac">
+					<label class="donateForm__type donateForm__type--first" for="ac" aria-label="Банковская карта">
+						<img width="40" height="20" src="img/credit-card.svg" alt="">
+					</label>
+					<input class="visually-hidden" type="radio" name="paymentType" value="PC" id="pc">
+					<label class="donateForm__type donateForm__type--last" for="pc" aria-label="Яндекс.Деньги">
+						<img width="40" height="20" src="img/yandex-money.svg" alt="">
+					</label>
+				</div>
+				<input class="donateForm__submit" type="submit" value="Перевести">
+			</form>
+		</div>
+	</article>
+	
 	<script src="js/scripts.js"></script>
 </body>
 </html>

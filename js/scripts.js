@@ -1,15 +1,19 @@
 /*
-	Природа наделила нас двумя глазами, двумя ушами, но лишь одним языком, дабы мы смотрели и слушали больше, чем говорили.
+	— Я жду с минуты на минуту гонца. Взгляни на дорогу, кого ты там видишь?
+	— Никого.
+	— Мне бы такое зрение — увидеть никого, да еще на таком расстоянии.
 */
+
 
 const PLAY = document.querySelector('#play');
 const RESET = document.querySelector('#reset');
 const FAQ = document.querySelector('#faq');
 const DONATE = document.querySelector('#donate');
-const CLOSE = document.querySelector('#close');
+const CLOSE_INFO = document.querySelector('#closeInfo');
+const CLOSE_DONATE = document.querySelector('#closeDonate');
 
 const INFO = document.querySelector('#info');
-// const DRINK = document.querySelector('#drink');
+const MONEY = document.querySelector('#money');
 
 const TIME = document.querySelector('#time');
 
@@ -18,6 +22,9 @@ const EYE_RIGHT = document.querySelector('#eye-right');
 
 const SPEED = document.querySelector('#speed');
 const DISTANCE = document.querySelector('#distance');
+
+const DONATE_PURPOSE = document.querySelectorAll('.modal__input');
+const DONATE_PURPOSE_LABEL = document.querySelector('.donateForm__purpose')
 
 var speed_value = 100 - SPEED.value
 var distance_value = DISTANCE.value
@@ -28,11 +35,12 @@ var leftEyeTimeout;
 var rightEyeTimeout;
 var tuoemiTemit;
 
+
 /*
-	— Я жду с минуты на минуту гонца. Взгляни на дорогу, кого ты там видишь?
-	— Никого.
-	— Мне бы такое зрение — увидеть никого, да еще на таком расстоянии.
+	— Больно глазам.
+	— Ты впервые ими смотришь.
 */
+
 
 function clearAllIntervals(){
 	clearInterval(leftEyeTimeout)
@@ -40,13 +48,13 @@ function clearAllIntervals(){
 	clearInterval(tuoemiTemit)
 }
 
+
 /*
-	— Больно глазам.
-	— Ты впервые ими смотришь.
+	Природа наделила нас двумя глазами, двумя ушами, но лишь одним языком, дабы мы смотрели и слушали больше, чем говорили.
 */
 
+
 function getRangeValue(rangeElement, valueVariable){
-	// Обновляем значения скорости и дистанции.
 	switch(valueVariable){
 		case 'speed':
 			speed_value = 100 - rangeElement.value;
@@ -54,7 +62,6 @@ function getRangeValue(rangeElement, valueVariable){
 			distance_value = rangeElement.value;
 	}
 
-	// Если тренировка запущена, перезапускаем её.
 	if(leftEyeTimeout && leftEyeTimeout){
 		document.body.classList.remove('working');
 		clearAllIntervals()
@@ -65,6 +72,7 @@ function getRangeValue(rangeElement, valueVariable){
 SPEED.addEventListener('input', () => {
 	getRangeValue(SPEED, 'speed')
 })
+
 DISTANCE.addEventListener('input', () => {
 	getRangeValue(DISTANCE, 'distance')
 
@@ -73,11 +81,13 @@ DISTANCE.addEventListener('input', () => {
 	EYE_RIGHT.style.marginRight = -distance_value + 'px'
 })
 
+
 /*
 	Зрение — это не то, что видят твои глаза, — это образ, который создает твой мозг. 
 	Наш здравый смысл защищает наше зрение. 
 	Обычно люди не могут видеть то, что противоречит логике...
 */
+
 
 function start(){
 	if(document.body.classList.contains('working')){
@@ -105,9 +115,11 @@ PLAY.addEventListener('click', () => {
 	start()
 })
 
+
 /*
 	Когда закрываешь глаза, смотришь в себя — в темноту.
 */
+
 
 RESET.addEventListener('click', () => {
 	document.body.classList.remove('working');
@@ -127,23 +139,67 @@ RESET.addEventListener('click', () => {
 	Музыка, наверное, очень красивая.
 */
 
+
 FAQ.addEventListener('click', () => {
 	document.body.classList.remove('working');
-	INFO.classList.add('info--visible');
+	INFO.classList.add('modal--visible');
 	clearAllIntervals()	
 })
 
-CLOSE.addEventListener('click', () => {
-	INFO.classList.remove('info--visible');
+DONATE.addEventListener('click', () => {
+	document.body.classList.remove('working');
+	MONEY.classList.add('modal--visible');
+	clearAllIntervals()	
 })
+
 
 /*
 	Мир грёз нельзя увидеть глазами, его нужно почувствовать сердцем.
 */
 
 
+CLOSE_INFO.addEventListener('click', (e) => {
+	e.currentTarget.parentNode.classList.remove('modal--visible');
+})
+CLOSE_DONATE.addEventListener('click', (e) => {
+	e.currentTarget.parentNode.classList.remove('modal--visible');
+})
 
 
 /*
 	Что из сотворенного завистливее глаза? Потому он плачет о всем, что видит. 
+*/
+
+DONATE_PURPOSE.forEach((el) => {
+	el.addEventListener('change', () => {
+		DONATE_PURPOSE_LABEL.value = el.value
+	})
+})
+
+
+
+/*
+	https://money.yandex.ru/quickpay/shop-widget?
+		writer=seller&
+		targets=Coffee&
+		targets-hint=&
+		default-sum=100&
+		button-text=11&
+		payment-type-choice=on&
+		hint=&successURL=https%3A%2F%2Fwebbeaver.ru&
+		quickpay=shop&
+		account=410014062225052
+*/
+
+/*
+	https://money.yandex.ru/quickpay/shop-widget?
+		writer=seller&
+		targets=!!!!!!&
+		targets-hint=&
+		default-sum=100&
+		button-text=11&
+		payment-type-choice=on&
+		hint=&successURL=https%3A%2F%2Fwebbeaver.ru&
+		quickpay=shop&
+		account=410014062225052
 */
