@@ -37,8 +37,6 @@ body{
 	outline: none;
 	filter: brightness(1.5);
 }
-.button:hover img, .button:focus img{
-}
 .button img{
 	display: block;
 }
