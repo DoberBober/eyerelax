@@ -105,14 +105,14 @@ function start(){
 				}
 			}
 		}, 1000)
-
+			
 		leftEyeTimeout = setInterval(() => {
 			EYE_LEFT.style.marginLeft = parseInt(window.getComputedStyle(EYE_LEFT).marginLeft) - 3 + 'px'
-		}, speed_value * 5)
+		}, speed_value * 15)
 	
 		rightEyeTimeout = setInterval(() => {
 			EYE_RIGHT.style.marginRight = parseInt(window.getComputedStyle(EYE_RIGHT).marginRight) - 3 + 'px'
-		}, speed_value * 5)
+		}, speed_value * 15)
 	}
 }
 
