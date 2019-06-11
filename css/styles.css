@@ -247,6 +247,7 @@ input[type=range]::-ms-thumb {
 }
 .modal--donate p{
 	margin-top: 0;
+	text-align: center;
 }
 .donate img, .donateForm__type img{
 	filter: grayscale(100%);
@@ -264,7 +265,8 @@ input[type=range]::-ms-thumb {
 }
 
 .donateForm{
-	margin-top: 25px;
+	display: table;
+	margin: 25px auto 0;
 	padding: 20px;
 	box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 3px 4px -3px rgba(0,0,0,.3);
 }
